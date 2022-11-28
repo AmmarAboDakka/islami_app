@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:islami_application/quran/Sura_name.dart';
 
@@ -22,6 +23,7 @@ class QuranTab extends StatelessWidget {
         Container(
             alignment: Alignment.center,
             child: Image.asset("assets/images/quran_image.png")),
+
         Divider(
           color: Mytheme.goldcolor,
           thickness: 5,
@@ -30,6 +32,7 @@ class QuranTab extends StatelessWidget {
           "♡قائمة سور القرآن الكريم♡",
           style: Theme.of(context).textTheme.headline2,
         ),
+
         Divider(
           color: Mytheme.goldcolor,
           thickness: 5,
@@ -42,7 +45,9 @@ class QuranTab extends StatelessWidget {
               separatorBuilder: (context,index){
                return Divider(
                   color: Mytheme.goldcolor,
-                  thickness: 5,
+                  thickness: 2,
+                  endIndent: 20,
+                 indent: 20,
                 );
               },
               itemCount: names.length),
@@ -50,4 +55,10 @@ class QuranTab extends StatelessWidget {
       ],
     );
   }
+
 }
+
+
+
+
+
