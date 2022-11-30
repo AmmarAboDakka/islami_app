@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_application/My_Theme.dart';
+import 'package:islami_application/quran/sura_name_details_num.dart';
+
 
 class SuranNameDetails extends StatefulWidget {
   static const String RouteName = "details";
@@ -11,12 +14,16 @@ class SuranNameDetails extends StatefulWidget {
 class _SuranNameDetailsState extends State<SuranNameDetails> {
   List<String> verses = [];
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
     var arg = ModalRoute.of(context)?.settings.arguments as SuraNameDetailsarg;
     if (verses.isEmpty) {
       readFiles(arg.index);
-    }
+          }
 
     return Stack(
       children: [
@@ -25,7 +32,7 @@ class _SuranNameDetailsState extends State<SuranNameDetails> {
             appBar: AppBar(
               iconTheme: const IconThemeData(color: Colors.black),
               title: Text(
-                "${arg.name}",
+                arg.name,
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),
@@ -40,34 +47,42 @@ class _SuranNameDetailsState extends State<SuranNameDetails> {
                   ? const Center(
                       child: CircularProgressIndicator(color: Colors.amber),
                     )
-                  : ListView.builder(
+                  : ListView.separated(
                       padding: const EdgeInsets.all(5),
                       itemCount: verses.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return Text(
-                          verses[index],
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headline1,
+                        return SuraNameDetailsnumber(verses[index],index+1);
+                      }, separatorBuilder: (BuildContext context, int index) {
+                        return Divider(
+                          color: Mytheme.goldcolor,
+
                         );
-                      },
+              },
                     ),
             )),
       ],
     );
   }
 
+
+
   readFiles(int index) async {
-    String conste =
-        await rootBundle.loadString("assets/files/${index + 1}.txt");
+    String conste = await rootBundle.loadString("assets/files/${index + 1}.txt");
+
 
     var lines = conste.split(
       "\n",
+
     );
+
 
     setState(() {
       verses = lines;
+
     });
   }
+
+
 }
 
 class SuraNameDetailsarg {
