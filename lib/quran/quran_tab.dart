@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:islami_application/quran/Sura_name.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../My_Theme.dart';
 
@@ -29,6 +30,7 @@ class QuranTab extends StatelessWidget {
           thickness: 5,
         ),
         Text(
+          // AppLocalizations.of(context)!.apptitle,
           "♡قائمة سور القرآن الكريم♡",
           style: Theme.of(context).textTheme.headline2,
         ),
