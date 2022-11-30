@@ -23,7 +23,7 @@ class _SuranNameDetailsState extends State<SuranNameDetails> {
         Image.asset("assets/images/bg.png"),
         Scaffold(
             appBar: AppBar(
-              iconTheme: IconThemeData(color: Colors.black),
+              iconTheme: const IconThemeData(color: Colors.black),
               title: Text(
                 "${arg.name}",
                 style: Theme.of(context).textTheme.headline1,
