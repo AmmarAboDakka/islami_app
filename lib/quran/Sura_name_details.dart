@@ -1,29 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:islami_application/My_Theme.dart';
+import 'package:islami_application/My_Theme/My_Theme.dart';
+import 'package:islami_application/provider/sura_provider.dart';
 import 'package:islami_application/quran/sura_name_details_num.dart';
+import 'package:provider/provider.dart';
 
-
-class SuranNameDetails extends StatefulWidget {
+class SuranNameDetails extends StatelessWidget {
   static const String RouteName = "details";
 
   @override
-  State<SuranNameDetails> createState() => _SuranNameDetailsState();
-}
-
-class _SuranNameDetailsState extends State<SuranNameDetails> {
-  List<String> verses = [];
-
-
-
-
-
-  @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SuraProvider>(context);
     var arg = ModalRoute.of(context)?.settings.arguments as SuraNameDetailsarg;
-    if (verses.isEmpty) {
-      readFiles(arg.index);
-          }
+    if (provider.verses.isEmpty) {
+      provider.readFiles(arg.index);
+    }
 
     return Stack(
       children: [
@@ -43,46 +33,27 @@ class _SuranNameDetailsState extends State<SuranNameDetails> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all()),
-              child: verses.isEmpty
+              child: provider.verses.isEmpty
                   ? const Center(
                       child: CircularProgressIndicator(color: Colors.amber),
                     )
                   : ListView.separated(
                       padding: const EdgeInsets.all(5),
-                      itemCount: verses.length,
+                      itemCount: provider.verses.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return SuraNameDetailsnumber(verses[index],index+1);
-                      }, separatorBuilder: (BuildContext context, int index) {
+                        return SuraNameDetailsnumber(
+                            provider.verses[index], index + 1);
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
                         return Divider(
                           color: Mytheme.goldcolor,
-
                         );
-              },
+                      },
                     ),
             )),
       ],
     );
   }
-
-
-
-  readFiles(int index) async {
-    String conste = await rootBundle.loadString("assets/files/${index + 1}.txt");
-
-
-    var lines = conste.split(
-      "\n",
-
-    );
-
-
-    setState(() {
-      verses = lines;
-
-    });
-  }
-
-
 }
 
 class SuraNameDetailsarg {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_application/quran/Sura_name.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../My_Theme.dart';
+import '../My_Theme/My_Theme.dart';
 
 class QuranTab extends StatelessWidget {
   List<String>names=["الفاتحه","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود"
@@ -30,8 +30,7 @@ class QuranTab extends StatelessWidget {
           thickness: 5,
         ),
         Text(
-          // AppLocalizations.of(context)!.apptitle,
-          "♡قائمة سور القرآن الكريم♡",
+          AppLocalizations.of(context)!.sura_Name,
           style: Theme.of(context).textTheme.headline2,
         ),
 
