@@ -1,3 +1,14 @@
 {
-"apptitle":"Eslami"
+"apptitle":"Eslami",
+"sura_Name":"Sura Name",
+"ahadeth":"Ahadeth",
+"sebha":"Sebha",
+"setting":"Setting",
+"radio":"Radio",
+"language":"Language",
+"theme":"Theme",
+"arabic":"Arabic",
+"english":"English",
+"moshaf":"Al-Moshaf",
+"tsbehcounter":"Tasbeh Counter"
 }

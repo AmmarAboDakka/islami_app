@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:islami_application/My_Theme.dart';
+import 'package:islami_application/My_Theme/My_Theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TasbehTab extends StatefulWidget {
   const TasbehTab({super.key});
-
 
   @override
   State<TasbehTab> createState() => _TasbehTabState();
@@ -22,19 +22,24 @@ class _TasbehTabState extends State<TasbehTab> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset("assets/images/sebha_img.png",),
-          Text("عدد التسبيحات",style: Theme.of(context).textTheme.headline1,),
+          Image.asset(
+            "assets/images/sebha_img.png",
+          ),
+          Text(
+            AppLocalizations.of(context)!.tsbehcounter,
+            style: Theme.of(context).textTheme.headline1,
+          ),
           Container(
-            padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color.fromRGBO(200, 178, 149, 1.0),
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(20)
-                
-              ),
-              child: Text("$counter",style: const TextStyle(fontSize: 25),)),
+                  color: const Color.fromRGBO(200, 178, 149, 1.0),
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                "$counter",
+                style: const TextStyle(fontSize: 25),
+              )),
           Container(
-
             padding: const EdgeInsets.all(13),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
@@ -94,11 +99,10 @@ class _TasbehTabState extends State<TasbehTab> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                MyText(dropdownValue), // <-- Text
+                MyText(dropdownValue), //
                 const SizedBox(
                   width: 5,
                 ),
-
               ],
             ),
           ),
